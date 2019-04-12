@@ -1,6 +1,5 @@
 import GameConfig from "./GameConfig";
 import Ease = Laya.Ease;
-import Event = Laya.Event;
 import Handler = Laya.Handler;
 import SoundManager = Laya.SoundManager;
 import Sprite = Laya.Sprite;
@@ -12,52 +11,48 @@ import Tips from "./tips";
 import Ship from "./ship";
 import End from "./end";
 import Thing from "./thing";
+let _this;
 var i = 0,
-    shipXY = 462,
-    shipIndex = 2,
+    mouseR = 0,
+    gameLevel = '0',
     thingList = [],
     isPause = false,
-    shipRoad = 0,
-    gameWidth = 630,
+    shipRoad = 100,
+    shipWidth = 200,
     percent;
-// var _;
-
-import {fourRoadPosition,Beats} from "./Road";
+import {fourRoadPosition,Beats0,Beats1,Beats2} from "./Road";
 
 class Main {
 	private bgManager;//游戏主背景
-    private scoreManager;//分数容器
     private endManager;//结束容器
     private gameContainer;//游戏容器
     private shipContainer;//船移动容器
+    private buttonwidth;
     private gamePanel;//游戏区容器
     private tipsManager;//提示容器（层级最高）
     private roadArr = [];//四条路数组
-    // private pressBgArr = [];//四个按键闪光数组
-	private roadPressBgArr = [];//四个按键闪光数组
-	
-	private wordsArr = Beats;//单词数组
-    private letterTotal = 0;
+	private wordsArr = Beats0;//单词数组
+    private letterTotal = 0;s
     private letterObjArr = [];
     private currLetter = {letter:''};//当前字母
-
     private screenLetterBoxArr = [];//在屏幕中的字母数组
-
-    private bgMusicChannel;//背景音乐实例
-
-	private i = 0;
-	private j = 0;//数组下标
-
     private letterV = 3000;//全程时间
-    private letterNum = 0;
+    private gouziLength;
+    private http;
 	constructor() {
+        _this = this;
+        window.onload = function () {
+            window.addEventListener('message',_this.post,false);
+        };
 		//根据IDE设置初始化引擎		
 		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
 		else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = GameConfig.scaleMode;
-		Laya.stage.screenMode = GameConfig.screenMode;
+        Laya.stage.screenMode = GameConfig.screenMode;
+        Laya.stage.alignH = GameConfig.alignH;
+        Laya.stage.alignV = GameConfig.alignV;
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -86,6 +81,7 @@ class Main {
     }
     //预加载
 	loadOtherAssets(): void {
+        let that = this;
         const assets: Array<any> = []
         assets.push({
 			url: Constants.sound0,
@@ -106,6 +102,26 @@ class Main {
         assets.push({
 			url: Constants.sound4,
 			type: Laya.Loader.SOUND
+        })
+        assets.push({
+			url: Constants.CountDown1,
+			type: Laya.Loader.IMAGE
+        })
+        assets.push({
+			url: Constants.CountDown2,
+			type: Laya.Loader.IMAGE
+        })
+        assets.push({
+			url: Constants.CountDown3,
+			type: Laya.Loader.IMAGE
+        })
+        assets.push({
+			url: Constants.ready,
+			type: Laya.Loader.IMAGE
+        })
+        assets.push({
+			url: Constants.go,
+			type: Laya.Loader.IMAGE
         })
 		assets.push({
             url: Constants.perfect,
@@ -176,7 +192,67 @@ class Main {
             type: Laya.Loader.IMAGE
         });
         assets.push({
-            url: Constants.ship,
+            url: Constants.badbul,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.badgre,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.badred,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.badyel,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.gobul,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.gogre,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.gored,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.goyel,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.okbul,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.okgre,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.okred,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.okyel,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.shopbul,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.shopgre,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.shopred,
+            type: Laya.Loader.IMAGE
+        });
+        assets.push({
+            url: Constants.shopyel,
             type: Laya.Loader.IMAGE
         });
         assets.push({
@@ -200,7 +276,67 @@ class Main {
             type: Laya.Loader.IMAGE
         });
 		assets.push({
-			url: "res/atlas/ship.atlas",
+			url: "res/atlas/ship/bad/bul.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/bad/gre.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/bad/red.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/bad/yel.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/go/bul.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/go/gre.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/go/red.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/go/yel.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/ok/bul.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/ok/gre.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/ok/red.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/ok/yel.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/shop/bul.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/shop/gre.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/shop/red.atlas",
+			type: Laya.Loader.ATLAS
+        });
+		assets.push({
+			url: "res/atlas/ship/shop/yel.atlas",
 			type: Laya.Loader.ATLAS
         });
         assets.push({
@@ -343,17 +479,21 @@ class Main {
             url: Constants.bg35,
             type: Laya.Loader.IMAGE
         });
-		// 预加载资源
+        // 预加载资源
 		Laya.loader.load(assets, Laya.Handler.create(this, this.GameManager), Laya.Handler.create(this, this.onAssetsLoading, null, false));
 		Laya.loader.on(Laya.Event.ERROR, this, this.onError)
 	}
     // 必需先加载进度条资源才能显示进度条
 	onProgressAssetsLoaded(): void {
-		// 显示进度条
+        // 显示进度条
+        
 		this.loadOtherAssets();
 	}
     onAssetsLoading(progress: number): void {
-		console.log(progress);
+        // console.log(progress);
+        if(progress == 100){
+            this.http.source.postMessage(JSON.stringify({name:'fetchQuestions',data:{}}),this.http.origin);
+        }
 	}
 	onError(err: string): void {
 		console.log("加载失败: " + err);
@@ -362,30 +502,41 @@ class Main {
 
 
 	GameManager(): void {
-        Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
         
         this.bgManager = new Bg();
     	Laya.stage.addChild(this.bgManager);
-
-        this.tipsManager = new Tips();
-        Laya.stage.addChild(this.tipsManager);
         
         this.gameContainer = new Sprite();
-        this.gameContainer.y = 0;
         Laya.stage.addChild(this.gameContainer);
 
         this.gamePanel = new Sprite();
-        this.gamePanel.width = gameWidth;
+        // this.gamePanel.width = gameWidth;
         this.gamePanel.height = 640;
-        this.gamePanel.x = 150;
         this.gameContainer.addChild(this.gamePanel);
-        shipRoad = gameWidth/4;
-        this.shipContainer = new Ship()
+
+        this.buttonwidth = new Sprite();
+        this.buttonwidth.alpha = 1;
+        this.buttonwidth.while = 1008;
+        this.buttonwidth.height = 152;
+        this.buttonwidth.y = 488;
+        this.buttonwidth.x = 0;
+        this.buttonwidth.loadImage("res/imgs/buttonWidth.png");
+        this.gameContainer.addChild(this.buttonwidth);
+        this.shipContainer = new Ship();
+        this.shipContainer.height = 178;
+        this.shipContainer.y = 600;
         this.gameContainer.addChild(this.shipContainer);
 
-
-        this.endManager = new End();
-    	Laya.stage.addChild(this.endManager);
+        this.tipsManager = new Tips(this);
+        Laya.stage.addChild(this.tipsManager);
+        gameLevel = window.localStorage.getItem('level')||'0';
+        if(gameLevel == '1'){
+            this.wordsArr = Beats1
+        }
+        if(gameLevel == '2'){
+            this.wordsArr = Beats2
+        }
+        this.gouziLength = this.wordsArr.length;
         this.initLetterObjArr();
         // Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onMouseMove);
 		Laya.stage.on(Laya.Event.MOUSE_DOWN, this, (e)=>{
@@ -454,20 +605,25 @@ class Main {
         this.tipsManager.stopTip.alpha = 1;
     }
     startGame (): void {
-        this.playMusic();
+        this.http.source.postMessage(JSON.stringify({name:'startGame',data:{}}),this.http.origin);
+        setTimeout(() => {
+            this.playMusic();            
+        }, 500);
         this.startWordArr();
         this.shipContainer.goship();
     }
 
     endGame (): void {
-        this.tipsManager.countComboTotalScore();
+        this.http.source.postMessage(JSON.stringify({name:'finishGame',data:{}}),this.http.origin);
+        this.endManager = new End(this);
+    	Laya.stage.addChild(this.endManager);
         var obj = this.tipsManager.getScore();
         this.endManager.showEndPanel(obj, this.letterTotal);
     }
 
     playMusic (): void {
         SoundManager.autoStopMusic = false;
-        // this.bgMusicChannel = SoundManager.playMusic("res/sounds/game1.mp3", 0);
+        SoundManager.playMusic("sound/ChipmunkFleet.mp3", 1);
     }
 
     startWordArr (): void {
@@ -481,8 +637,15 @@ class Main {
             this.roadArr.push(oneRoadSprite);
             this.gamePanel.addChild(oneRoadSprite);
         }
+        let roads = 0;
+        let roads2 = 1;
         this.letterObjArr.map(data=>{
-            data[0]['road'] = parseInt(Math.random()*4+"");
+            let thisRoad = 0
+            do {
+                thisRoad = parseInt(Math.random()*4+"");
+            } while (roads == thisRoad || roads2 == thisRoad)
+            roads = thisRoad;
+            data[0]['road'] = roads
         })
         i = 0;
         this.nextTimeout();
@@ -515,7 +678,6 @@ class Main {
     }
 	//设置速度
     appendOneLetter (letterBox) {
-        this.letterNum++;
         let _this = this;
 
         this.screenLetterBoxArr.push(letterBox);
@@ -563,12 +725,6 @@ class Main {
                         this.setPercent(percent);
                         this.setShow();
                     }
-                    if (letter.y >= 420 && letterBox.wordObj.letter == 2 && shipIndex == letterBox.guidao) {
-                        _this.onKeyDownLetter(letter, true, -1);
-                        break;
-                    } else {
-
-                    }
                 }
             }
         });
@@ -590,76 +746,48 @@ class Main {
     }
 
     onClickDown = function (e) {
-        SoundManager.playSound("sound/button.mp3", 1);        
-        this.shipContainer.onMove(Laya.stage.mouseX)
+        e.stopPropagation();
+        // this.shipContainer.onMove(Laya.stage.mouseX)
 		// console.log("onStartDrag", Laya.stage.mouseX, Laya.stage.mouseY)
         var letter;
+        let isCollision = false;
+        let mouseX = Laya.stage.mouseX;
+        if(mouseX > shipRoad && mouseX < shipRoad+shipWidth){
+            mouseR = 0;
+        } 
+        if(mouseX > shipRoad+shipWidth && mouseX < shipRoad+shipWidth*2) {
+            mouseR = 1;
+        };
+        if(mouseX > shipRoad+shipWidth*2 && mouseX < shipRoad+shipWidth*3) {
+            mouseR = 2;
+        };
+        if(mouseX > shipRoad+shipWidth*3 && mouseX < shipRoad+shipWidth*4) {
+            mouseR = 3;
+        };
         for (var i = 0; i < this.screenLetterBoxArr.length; i++) {
             letter = this.screenLetterBoxArr[i];
-            if (letter.isOver == false) {
-                let mouseX = Laya.stage.mouseX-150;
-                let isCollision = false;
-                if(mouseX < shipRoad){
-                    shipIndex = 0;
-                    if(letter.guidao == 0){
-                        isCollision = true;
-                        shipXY = 0;
-                    }
-                } 
-                if(mouseX > shipRoad && mouseX < shipRoad*2) {
-                    shipIndex = 1;
-                    if(letter.guidao == 1){
-                        isCollision = true
-                        shipXY = 1;
-                    }
-                };
-                if(mouseX > shipRoad*2 && mouseX < shipRoad*3) {
-                    shipIndex = 2;
-                    if(letter.guidao == 2){
-                        isCollision = true
-                        shipXY = 2;
-                    }
-                };
-                if(mouseX > shipRoad*3) {
-                    shipIndex = 3;
-                    if(letter.guidao == 3){
-                        isCollision = true
-                        shipXY = 3;
-                    }
-                };
-                if (letter.y < 440) {
-                    console.log('不在范围里 ' + letter.y);
+            if (letter.isOver == false && letter.guidao == mouseR) {
+                if (letter.y < 462) {
+                    SoundManager.playSound("sound/button.mp3", 1);                    
+                    // console.log('不在范围里 ' + letter.y);
                     // this.onKeyDownLetter(letter, false);
                     break;
-                } else if (letter.y >= 440 && letter.y < 470 && isCollision) {
+                } else if (letter.y >= 462 && letter.y < 500) {
                     if(letter.wordObj.letter == '2'){
                         this.onKeyDownLetter(letter, true, -1);
                     } else {
-                        this.onKeyDownLetter(letter, true, 5);
-                    }
-                    break;
-                } else if (letter.y >= 470 && letter.y < 500 && isCollision) {
-                    if(letter.wordObj.letter == '2'){
-                        this.onKeyDownLetter(letter, true, -1);
-                    } else {
-                        this.onKeyDownLetter(letter, true, 10);
-                    }
-                    break;
-                } else if (letter.y >= 500 && letter.y < 560 && isCollision) {
-                    if(letter.wordObj.letter == '2'){
-                        this.onKeyDownLetter(letter, true, -1);
-                    } else {
+                        SoundManager.playSound("sound/beat.mp3", 1);
                         this.onKeyDownLetter(letter, true, 20);
                     }
                     break;
-                } else if (letter.y >= 560 && letter.y < 590 && isCollision) {
+                } else if (letter.y >= 500 && letter.y < 550) {
                     if(letter.wordObj.letter == '2'){
                         this.onKeyDownLetter(letter, true, -1);
                     } else {
                         this.onKeyDownLetter(letter, true, 10);
                     }
                     break;
-                } else if (letter.y >= 590 && letter.y < 620 && isCollision) {
+                } else if (letter.y >= 550 && letter.y < 600) {
                     if(letter.wordObj.letter == '2'){
                         this.onKeyDownLetter(letter, true, -1);
                     } else {
@@ -667,7 +795,8 @@ class Main {
                     }
                     break;
                 } else {
-                    console.log('不在范围里 ' + letter.y);
+                    SoundManager.playSound("sound/button.mp3", 1);
+                    // console.log('不在范围里 ' + letter.y);
                 }
                 break;
             }
@@ -678,10 +807,9 @@ class Main {
         if (isPipei) {
             if(score == -1){
                 SoundManager.playSound("sound/bad.mp3", 1);                
-                this.shipContainer.bandship();
+                this.shipContainer.bandship(letter.guidao);
             }else{
-                SoundManager.playSound("sound/beat.mp3", 1);
-                this.shipContainer.okship();
+                this.shipContainer.okship(letter.guidao);
             }
             this.tipsManager.showPlayTip(score);
             letter.pipei(score);
@@ -692,6 +820,9 @@ class Main {
                 letter.bupipei();
             }
         }
+    }
+    post(event) {
+        _this.http = event;
     }
 }
 //激活启动类

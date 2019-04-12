@@ -57,11 +57,36 @@ export default class Constants {
     static stop = "res/imgs/stop.png"
     static time = "res/imgs/time.png"
     static topBan = "res/imgs/topBan.png"
-    static ship = "res/atlas/ship.png"
+
+    static badbul = "res/atlas/ship/bad/bul.png"
+    static badgre = "res/atlas/ship/bad/gre.png"
+    static badred = "res/atlas/ship/bad/red.png"
+    static badyel = "res/atlas/ship/bad/yel.png"
+
+    static okbul = "res/atlas/ship/ok/bul.png"
+    static okgre = "res/atlas/ship/ok/gre.png"
+    static okred = "res/atlas/ship/ok/red.png"
+    static okyel = "res/atlas/ship/ok/yel.png"
+
+    static gobul = "res/atlas/ship/go/bul.png"
+    static gogre = "res/atlas/ship/go/gre.png"
+    static gored = "res/atlas/ship/go/red.png"
+    static goyel = "res/atlas/ship/go/yel.png"
+
+    static shopbul = "res/atlas/ship/shop/bul.png"
+    static shopgre = "res/atlas/ship/shop/gre.png"
+    static shopred = "res/atlas/ship/shop/red.png"
+    static shopyel = "res/atlas/ship/shop/yel.png"
+
     static sound0 = "sound/321.mp3"
     static sound1 = "sound/button.mp3"
     static sound2 = "sound/beat.mp3"
     static sound3 = "sound/end.mp3"
     static sound4 = "sound/bad.mp3"
+    static CountDown1 = "res/imgs/CountDown1.png"
+    static CountDown2 = "res/imgs/CountDown2.png"
+    static CountDown3 = "res/imgs/CountDown3.png"
+    static ready = "res/imgs/ready.png"
+    static go = "res/imgs/GO.png"
 
 }

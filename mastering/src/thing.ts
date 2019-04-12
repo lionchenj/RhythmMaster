@@ -49,8 +49,18 @@ export default class thing extends Laya.Sprite {
     addenergyImg ():void {
         var imgSprite = new Sprite();
         imgSprite.loadImage('res/imgs/'+this.wordObj.letter.toLowerCase()+'.png');
-        imgSprite.scaleX = 0.45;
-        imgSprite.scaleY = 0.45;
+        
+        if (this.wordObj.letter == 1){
+            imgSprite.width = 107;
+            imgSprite.height = 151;
+            imgSprite.pivotX = 150;
+        } else {
+            imgSprite.width = 142;
+            imgSprite.height = 140;
+            imgSprite.pivotX = 142;
+        }
+        // imgSprite.scaleX = 0.45;
+        // imgSprite.scaleY = 0.45;
         this.zimuCon.addChild(imgSprite);
     }
 
@@ -79,7 +89,7 @@ export default class thing extends Laya.Sprite {
     xiaoshi ():void {
         Tween.clearAll(this);
         this.isOver = true;
-        Tween.to(this, {alpha: 0}, 500, null, new Handler(this, function () {
+        Tween.to(this, {alpha: 0}, 20, null, new Handler(this, function () {
             this.event('UIenergyBox_Remove_Event', [this]);
         }));
     }

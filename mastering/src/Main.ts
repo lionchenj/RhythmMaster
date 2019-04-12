@@ -20,9 +20,11 @@ var i = 0,
     shipRoad = 0,
     gameWidth = 900,
     percent;
+var gameLevel = '0';
+    
 // var _;
 
-import {fourRoadPosition,Beats} from "./Road";
+import {fourRoadPosition,Beats0,Beats1,Beats2} from "./Road";
 
 class Main {
 	private bgManager;//游戏主背景
@@ -36,7 +38,7 @@ class Main {
     // private pressBgArr = [];//四个按键闪光数组
 	private roadPressBgArr = [];//四个按键闪光数组
 	
-	private wordsArr = Beats;//单词数组
+    private wordsArr = Beats0;//单词数组
     private letterTotal = 0;
     private letterObjArr = [];
     private currLetter = {letter:''};//当前字母
@@ -46,17 +48,29 @@ class Main {
     private bgMusicChannel;//背景音乐实例
 
 	private i = 0;
-	private j = 0;//数组下标
+    private j = 0;//数组下标
+
+    private width;
+    private height;
+
 
     private letterV = 3000;//全程时间
     private letterNum = 0;
 	constructor() {
-		//根据IDE设置初始化引擎		
-		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
-		else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
+        var w = Laya.Browser.width;
+        var w_q = w/640;
+        var h = Laya.Browser.height/w_q;
+        this.height = h;
+        this.width = GameConfig.height;
+        //根据IDE设置初始化引擎		
+        if (window["Laya3D"]) Laya3D.init(h, GameConfig.height);
+		else Laya.init(h, GameConfig.height, Laya["WebGL"]);
+		// if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
+		// else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
-		Laya.stage.scaleMode = GameConfig.scaleMode;
+        Laya.stage.scaleMode = GameConfig.scaleMode;
+        // Laya.stage.scaleMode = "showall";
 		Laya.stage.screenMode = GameConfig.screenMode;
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
@@ -256,146 +270,6 @@ class Main {
             url: Constants.bg,
             type: Laya.Loader.IMAGE
         });
-        assets.push({
-            url: Constants.bg1,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg2,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg3,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg4,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg5,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg6,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg7,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg8,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg9,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg10,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg11,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg12,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg13,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg14,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg15,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg16,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg17,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg18,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg19,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg20,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg21,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg22,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg23,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg24,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg25,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg26,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg27,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg28,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg29,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg30,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg31,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg32,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg33,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg34,
-            type: Laya.Loader.IMAGE
-        });
-        assets.push({
-            url: Constants.bg35,
-            type: Laya.Loader.IMAGE
-        });
 		// 预加载资源
 		Laya.loader.load(assets, Laya.Handler.create(this, this.GameManager), Laya.Handler.create(this, this.onAssetsLoading, null, false));
 		Laya.loader.on(Laya.Event.ERROR, this, this.onError)
@@ -421,8 +295,9 @@ class Main {
 
         this.car = new car();
         Laya.stage.addChild(this.car);
+        this.initLetterObjArr();
         
-        this.tipsManager = new Tips();
+        this.tipsManager = new Tips(this);
         Laya.stage.addChild(this.tipsManager);
         this.tipsManager.jump(true);
         
@@ -435,14 +310,18 @@ class Main {
         this.gamePanel.height = 640;
         this.gamePanel.x = 100;
         this.gameContainer.addChild(this.gamePanel);
-
-        this.endManager = new End();
-    	Laya.stage.addChild(this.endManager);
-        this.initLetterObjArr();
+        
         // Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onMouseMove);
-		Laya.stage.on(Laya.Event.MOUSE_DOWN, this, (e)=>{
-            this.onClickDown(e)
-        });
+		// Laya.stage.on(Laya.Event.MOUSE_DOWN, this, (e)=>{
+        //     this.onClickDown(e)
+        // });
+        gameLevel = window.localStorage.getItem('level')||'0';
+        if(gameLevel == '1'){
+            this.wordsArr = Beats1
+        }
+        if(gameLevel == '2'){
+            this.wordsArr = Beats2
+        }
         this.initGame();
     }
     //鼠标移动事件
@@ -511,6 +390,8 @@ class Main {
     }
 
     endGame (): void {
+        this.endManager = new End(this);
+    	Laya.stage.addChild(this.endManager);
         this.tipsManager.countComboTotalScore();
         var obj = this.tipsManager.getScore();
         this.endManager.showEndPanel(obj, this.letterTotal);
@@ -518,6 +399,8 @@ class Main {
 
     playMusic (): void {
         SoundManager.autoStopMusic = false;
+        console.log('ChipmunkFleet')        
+        SoundManager.playMusic("sound/ChipmunkFleet.mp3", 1);
         // this.bgMusicChannel = SoundManager.playMusic("res/sounds/game1.mp3", 0);
     }
 
@@ -648,39 +531,25 @@ class Main {
             letter = this.screenLetterBoxArr[i];
             if (letter.isOver == false) {
                 console.log(letter.x)
-                if (letter.x < 400) {
+                if (letter.x < 555) {
                     console.log('不在范围里 ' + letter.x);
                     // this.onKeyDownLetter(letter, false);
                     break;
-                } else if (letter.x >= 400 && letter.x < 440 ) {
-                    if(letter.wordObj.letter == '2'){
-                        this.onKeyDownLetter(letter, true, -1);
-                    } else {
-                        this.onKeyDownLetter(letter, true, 5);
-                    }
-                    break;
-                } else if (letter.x >= 440 && letter.x < 480 ) {
-                    if(letter.wordObj.letter == '2'){
-                        this.onKeyDownLetter(letter, true, -1);
-                    } else {
-                        this.onKeyDownLetter(letter, true, 10);
-                    }
-                    break;
-                } else if (letter.x >= 480 && letter.x < 530 ) {
+                } else if (letter.x >= 644 && letter.x < 676 ) {
                     if(letter.wordObj.letter == '2'){
                         this.onKeyDownLetter(letter, true, -1);
                     } else {
                         this.onKeyDownLetter(letter, true, 20);
                     }
                     break;
-                } else if (letter.x >= 530 && letter.x < 570 ) {
+                } else if (letter.x >= 612 && letter.x < 705 ) {
                     if(letter.wordObj.letter == '2'){
                         this.onKeyDownLetter(letter, true, -1);
                     } else {
                         this.onKeyDownLetter(letter, true, 10);
                     }
                     break;
-                } else if (letter.y >= 570 && letter.y < 620) {
+                } else if (letter.x >= 555 && letter.x < 777 ) {
                     if(letter.wordObj.letter == '2'){
                         this.onKeyDownLetter(letter, true, -1);
                     } else {

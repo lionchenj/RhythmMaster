@@ -4,15 +4,16 @@ import Event = Laya.Event;
 import HttpRequest = Laya.HttpRequest;
 import Browser = Laya.Browser;
 import WebGL = Laya.WebGL;
-export default class bg extends Laya.Sprite {
+class HTTP {
 
     private hr: HttpRequest;
 
     constructor() {
-        super();
+        // super();
+        this.hr = new Laya.HttpRequest
     }
 
-    post(push,data): void {
+    public post(push,data): void {
         this.hr = new HttpRequest();
         this.hr.once(Event.PROGRESS, this, this.onHttpRequestProgress);
         this.hr.once(Event.COMPLETE, this, this.onHttpRequestComplete);
@@ -32,3 +33,4 @@ export default class bg extends Laya.Sprite {
         return this.hr.data;
     }
 }
+export default HTTP;

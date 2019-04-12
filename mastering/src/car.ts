@@ -6,8 +6,10 @@ export default class car extends Laya.Sprite {
     
     initBg():void {
         var car = new Laya.Sprite();
-        car.x = 750;
-        car.y = 30;
+        car.width = 666;
+        car.height = 394;
+        car.x = 789;
+        car.y = 113;
         car.loadImage("res/imgs/car.png");
         this.addChild(car);
     }

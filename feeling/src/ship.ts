@@ -1,6 +1,8 @@
+var Animation = Laya.Animation;
 export default class ship extends Laya.Sprite {
-    // 定义黑人跑步主体
-    private ship: Laya.Animation
+    private shipBg;
+    private ship = [new Animation(),new Animation(),new Animation(),new Animation()];
+
 
 
     constructor() {
@@ -9,48 +11,55 @@ export default class ship extends Laya.Sprite {
     }
 
     init(): void {
-        this.ship = new Laya.Animation();
-        this.ship.loadAnimation("ani/stopship.ani");
-        this.ship.x = 520;
-        this.ship.y = 600;
-        this.ship.play(1, true);        
-        this.addChild(this.ship);
+        let shipW =200;
+        this.ship[0] = new Animation();
+        this.ship[0].x = shipW;
+        this.ship[0].y = -50;
+        this.ship[0].loadAnimation("ani/stopship0.ani");
+        this.ship[0].play(1, true);        
+        this.addChild(this.ship[0]);
+        this.ship[1] = new Animation();
+        this.ship[1].x = shipW*2;
+        this.ship[1].y = -50;
+        this.ship[1].loadAnimation("ani/stopship1.ani");
+        this.ship[1].play(1, true);        
+        this.addChild(this.ship[1]);
+        this.ship[2] = new Animation();
+        this.ship[2].x = shipW*3;
+        this.ship[2].y = -50;
+        this.ship[2].loadAnimation("ani/stopship2.ani");
+        this.ship[2].play(1, true);        
+        this.addChild(this.ship[2]);
+        this.ship[3] = new Animation();
+        this.ship[3].x = shipW*4;
+        this.ship[3].y = -50;
+        this.ship[3].loadAnimation("ani/stopship3.ani");
+        this.ship[3].play(1, true);        
+        this.addChild(this.ship[3]);
     }
-    goship():void{
-        this.ship.loadAnimation("ani/goship.ani");
-        this.ship.y = 540;
-        this.addChild(this.ship);
+    goship():void{      
+        this.ship[0].loadAnimation("ani/goship0.ani");
+        this.ship[1].loadAnimation("ani/goship1.ani");
+        this.ship[2].loadAnimation("ani/goship2.ani");
+        this.ship[3].loadAnimation("ani/goship3.ani");
     }
 
-    onMove(x:number): void {
-        let nowX = x<150?150:x>780?780:x;
-        Laya.Tween.to(this.ship,{x:nowX},10)
-    }
-    show(): void {
-        this.ship.visible = true
-
-    }
-
-    hide(): void {
-        this.ship.visible = false
-    }
-    okship():void{
+    okship(index):void{
         var ani = new Laya.Animation();
-        ani.loadAnimation("ani/okship.ani");
+        ani.loadAnimation("ani/okship"+index+".ani");
         ani.y = -30;
-        this.ship.addChild(ani);
+        this.ship[index].addChild(ani);
         ani.play(1,false);
         setTimeout(() => {
             ani.removeSelf()
         }, 400);
     }
-    bandship():void{
+    bandship(index):void{
         var ani = new Laya.Animation();
-        ani.loadAnimation("ani/bandship.ani");
-        ani.y = 30;
+        ani.loadAnimation("ani/bandship"+index+".ani");
         ani.scaleX= 1.1,
         ani.scaleY= 1.1,
-        this.ship.addChild(ani);
+        this.ship[index].addChild(ani);
         ani.play(1,false);
         setTimeout(() => {
             ani.removeSelf()

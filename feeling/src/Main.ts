@@ -61,10 +61,14 @@ class Main {
             window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
                 setTimeout(() => {
                     if (window.orientation === 180 || window.orientation === 0) { 
+                        // if(window.innerHeight>700||window.innerWidth>700 && window.innerWidth>window.innerHeight){
+
+                        // }else{
                         // Laya.stage.width = 1008;
                         // if(_this.endManager) _this.endManager.pos(Laya.stage.width/2,0);
                         // if(gamePanel) gamePanel.x = Laya.stage.width/2;
                         // Laya.stage.screenMode = GameConfig.screenMode;
+                        // }
                         Laya.stage.scaleMode = 'exactfit';
                     } 
                     if (window.orientation === 90 || window.orientation === -90 ){
@@ -87,7 +91,7 @@ class Main {
         Laya.stage.screenMode = GameConfig.screenMode;
         Laya.stage.alignH = GameConfig.alignH;
         Laya.stage.alignV = GameConfig.alignV;
-        Laya.stage.width = window.innerHeight>700||window.innerWidth>700||window.innerWidth>window.innerHeight?1380:1008;
+        Laya.stage.width = window.innerHeight>700||window.innerWidth>700 && window.innerWidth>window.innerHeight?1380:1008;
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -632,22 +636,6 @@ class Main {
 			type: Laya.Loader.IMAGE
         })
         assets.push({
-			url: Constants.longbg1,
-			type: Laya.Loader.IMAGE
-        })
-        assets.push({
-			url: Constants.longbg2,
-			type: Laya.Loader.IMAGE
-        })
-        assets.push({
-			url: Constants.longbg3,
-			type: Laya.Loader.IMAGE
-        })
-        assets.push({
-			url: Constants.longbg4,
-			type: Laya.Loader.IMAGE
-        })
-        assets.push({
 			url: Constants.load,
 			type: Laya.Loader.IMAGE
         })
@@ -757,10 +745,7 @@ class Main {
 	GameManager(): void {
         setTimeout(() => {
             LoadingDialog.closeAll();
-            Laya.stage.scaleMode = window.innerHeight>700||window.innerWidth>700||window.innerWidth>window.innerHeight?'showall':'exactfit';
-            // this.typeLVL = laya.net.LocalStorage.getItem('typeLVL');
-            // this.typeLVL?'':laya.net.LocalStorage.setItem('typeLVL','type1')
-console.log(Laya.stage.width,Laya.stage.height);
+            Laya.stage.scaleMode = window.innerWidth>window.innerHeight?'showall':'exactfit';
             this.heightAll = 690;
             Laya.stage.removeChild(this.bgManager);
             Laya.stage.removeChild(gamePanel);

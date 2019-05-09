@@ -55,7 +55,7 @@ export default class tips extends Laya.Sprite {
         this.gamePanel = gamePanel;
         that = thats
         this.countDown2 = parseInt((thats.data.musicDuration / 1000).toString());
-        // this.countDown2 = 55;
+        // this.countDown2 = 2;
         this.initTips();
     }
 

@@ -92,7 +92,7 @@ export default class end extends Laya.Sprite {
         this.endshow.width = 1008;
         this.endshow.height = 640;
         this.endshow.pivot(504, 0); 
-        this.endshow.pos(800, 0);
+        this.endshow.pos(800, -50);
         this.endshow.play(0, false);  
         this.endshow.loadAnimation(start);
         centers.addChild(this.endshow);

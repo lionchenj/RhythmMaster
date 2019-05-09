@@ -69,12 +69,66 @@
             var domain = 'https://dev170.weibanker.cn/chenjj/www/horizontal/index.html';
             var iframe = document.getElementById('myIFrame').contentWindow;
             //发送消息
-                var message = { "name": "castQuestions", "data": [{ "questionId": 2051, "title": "感受节奏", "payload": { "explainAudioUrl": "https://muses-test.oss-cn-beijing.aliyuncs.com/muses-lesson/1812061139/audio/5.mp3", "musicUrl": "https://muses-test.oss-cn-beijing.aliyuncs.com/muses-lesson/1812061139/audio/4.mp3", "musicDuration": 9000, "objects": [{ "size": 1, "startTime": 1000, "endTime": 2000, "obstacle": true },
-                { "size": 1, "startTime": 1000, "endTime": 2000, "obstacle": false },
-                { "size": 1, "startTime": 4000, "endTime": 5000, "obstacle": false },
-                { "size": 1, "startTime": 4000, "endTime": 5000, "obstacle": true },
-                { "size": 1, "startTime": 6000, "endTime": 7000, "obstacle": false },
-                { "size": 1, "startTime": 8000, "endTime": 9000, "obstacle": true }], "type": 107101 }, "type": 107101 }] };
+                var message = { "name": "castQuestions", "data": [
+                               {questionId: 2101,
+            title: "跟随节奏",
+            payload: {
+              explainAudioUrl: "https://muses-online.fbcontent.cn/muses-lesson/music/audio/%E6%B8%B8%E6%88%8F%E9%9F%B3%E9%A2%91/%E8%8A%B1%E6%A0%97%E9%BC%A0%E6%B8%B8%E6%88%8F%E9%9F%B3%E9%A2%91/%E8%8A%B1%E6%A0%97%E9%BC%A0%E6%B8%B8%E6%88%8F2%E8%A7%A3%E8%AF%B4.mp3",
+              musicUrl: "https://muses-online.fbcontent.cn/muses-lesson/music/audio/%E6%B8%B8%E6%88%8F%E9%9F%B3%E9%A2%91/%E8%8A%B1%E6%A0%97%E9%BC%A0%E6%B8%B8%E6%88%8F%E9%9F%B3%E9%A2%91/%E8%8A%B1%E6%A0%97%E9%BC%A0%E5%88%9D%E7%BA%A7%E9%9F%B3%E9%A2%91.mp3",
+              musicDuration: 532930,
+              skinType: 1,
+              objects: [
+                { size: 1, startTime: 6500, endTime: 7500, obstacle: false },
+                { size: 1, startTime: 7500, endTime: 8500, obstacle: false },
+                { size: 1, startTime: 8600, endTime: 9600, obstacle: false },
+                { size: 1, startTime: 9600, endTime: 10600, obstacle: false },
+                { size: 1, startTime: 10700, endTime: 11700, obstacle: false },
+                { size: 1, startTime: 11800, endTime: 12800, obstacle: false },
+                { size: 1, startTime: 12900, endTime: 13900, obstacle: false },
+                { size: 1, startTime: 14000, endTime: 15000, obstacle: false },
+                { size: 1, startTime: 15100, endTime: 16100, obstacle: false },
+                { size: 1, startTime: 16200, endTime: 17200, obstacle: false },
+                { size: 1, startTime: 17200, endTime: 18200, obstacle: false },
+                { size: 1, startTime: 18300, endTime: 19300, obstacle: false },
+                { size: 1, startTime: 19400, endTime: 20400, obstacle: false },
+                { size: 1, startTime: 20400, endTime: 21400, obstacle: false },
+                { size: 1, startTime: 21500, endTime: 22500, obstacle: false },
+                { size: 1, startTime: 22500, endTime: 23500, obstacle: false },
+                { size: 1, startTime: 23600, endTime: 24600, obstacle: false },
+                { size: 1, startTime: 24700, endTime: 25700, obstacle: false },
+                { size: 1, startTime: 25700, endTime: 26700, obstacle: false },
+                { size: 1, startTime: 26800, endTime: 27800, obstacle: false },
+                { size: 1, startTime: 27800, endTime: 28800, obstacle: false },
+                { size: 1, startTime: 28800, endTime: 29800, obstacle: false },
+                { size: 1, startTime: 29900, endTime: 30900, obstacle: false },
+                { size: 1, startTime: 31000, endTime: 32000, obstacle: false },
+                { size: 1, startTime: 32100, endTime: 33100, obstacle: false },
+                { size: 1, startTime: 33100, endTime: 34100, obstacle: false },
+                { size: 1, startTime: 34200, endTime: 35200, obstacle: false },
+                { size: 1, startTime: 35300, endTime: 36300, obstacle: false },
+                { size: 1, startTime: 36400, endTime: 37400, obstacle: false },
+                { size: 1, startTime: 37500, endTime: 38500, obstacle: false },
+                { size: 1, startTime: 38600, endTime: 39600, obstacle: false },
+                { size: 1, startTime: 39600, endTime: 40600, obstacle: false },
+                { size: 1, startTime: 40800, endTime: 41800, obstacle: false },
+                { size: 1, startTime: 41800, endTime: 42800, obstacle: false },
+                { size: 1, startTime: 42900, endTime: 43900, obstacle: false },
+                { size: 1, startTime: 44000, endTime: 45000, obstacle: false },
+                { size: 1, startTime: 45100, endTime: 46100, obstacle: false },
+                { size: 1, startTime: 46100, endTime: 47100, obstacle: false },
+                { size: 1, startTime: 47100, endTime: 48100, obstacle: false },
+                { size: 1, startTime: 13200, endTime: 14200, obstacle: true },
+                { size: 1, startTime: 24000, endTime: 25000, obstacle: true },
+                { size: 1, startTime: 30000, endTime: 31000, obstacle: true },
+                { size: 1, startTime: 38900, endTime: 39900, obstacle: true },
+                { size: 1, startTime: 43000, endTime: 44000, obstacle: true }
+              ],
+              type: 107102
+            },
+            type: 107102
+          }
+                        ] 
+                    };
                 iframe.postMessage(message,'https://dev170.weibanker.cn/chenjj/www/horizontal/index.html'); 
             //响应事件
             window.addEventListener('message',function(event) {

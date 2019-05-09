@@ -1,13 +1,15 @@
 var Handler = Laya.Handler;
 var Sprite = Laya.Sprite;
 var Tween = Laya.Tween;
+var that;
 export default class thing extends Laya.Sprite {
     private wordObj;
     public isOver;
     private zimuCon;
     
-    constructor(wordObj) {
+    constructor(thats,wordObj) {
         super();
+        that = thats;
         this.wordObj = wordObj;
         this.isOver = false;//是否已经排除
         this.zimuCon = new Sprite();
@@ -17,10 +19,21 @@ export default class thing extends Laya.Sprite {
 
     addenergyImg ():void {
         var imgSprite = new Sprite();
-        imgSprite.loadImage('res/imgs/'+this.wordObj.letter.toLowerCase()+'.png');
+        imgSprite.loadImage('res/imgs/'+that.typeLVL+'/'+this.wordObj.letter.toLowerCase()+'.png');
         imgSprite.scaleX = 0.45;
         imgSprite.scaleY = 0.45;
-        imgSprite.pivot(57,74);
+        if(that.typeLVL == 'type1'){
+            imgSprite.pivot(57,94);
+        }
+        if(that.typeLVL == 'type2'){
+            imgSprite.pivot(62,124);
+        }
+        if(that.typeLVL == 'type3'){
+            imgSprite.pivot(58,126);
+        }
+        if(that.typeLVL == 'type4'){
+            imgSprite.pivot(70,68);
+        }
         this.zimuCon.addChild(imgSprite);
     }
 

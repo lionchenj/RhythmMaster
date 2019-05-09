@@ -1,40 +1,41 @@
 D .
 D bg
-R A83AFABF 1.png
-R C2F3101C 10.png
-R 75CA01AA 11.png
-R C77B5EEE 12.png
-R 4BAF1D0C 13.png
-R A77BF192 14.png
-R 0D52B77F 15.png
-R C02F999D 16.png
-R A79F2C7A 17.png
-R E2CC2D84 18.png
-R 9BEE2F00 19.png
-R A935D248 2.png
-R 7F071F64 20.png
-R ACABA79F 21.png
-R 13499F54 22.png
-R B958392E 23.png
-R FE73BAAC 24.png
-R 1E6F801A 25.png
-R 75958E8E 26.png
-R BA3A4537 27.png
-R 8AAAAE34 28.png
-R D1892820 29.png
-R 7194127B 3.png
-R 56514747 30.png
-R 9A3E88B9 31.png
-R B9AAF92F 32.png
-R 7FF0B3B3 33.png
-R A50EC162 34.png
-R 08E61389 35.png
-R C066D2FB 4.png
-R 34112B51 5.png
-R 0A6C7278 6.png
-R 3CC54D85 7.png
-R FF62ED6A 8.png
-R 755203ED 9.png
+P A83AFABF 1.png
+P C2F3101C 10.png
+P 75CA01AA 11.png
+P C77B5EEE 12.png
+P 4BAF1D0C 13.png
+P A77BF192 14.png
+P 0D52B77F 15.png
+P C02F999D 16.png
+P A79F2C7A 17.png
+P E2CC2D84 18.png
+P 9BEE2F00 19.png
+P A935D248 2.png
+P 7F071F64 20.png
+P ACABA79F 21.png
+P 13499F54 22.png
+P B958392E 23.png
+P FE73BAAC 24.png
+P 1E6F801A 25.png
+P 75958E8E 26.png
+P BA3A4537 27.png
+P 8AAAAE34 28.png
+P D1892820 29.png
+P 7194127B 3.png
+P 56514747 30.png
+P 9A3E88B9 31.png
+P B9AAF92F 32.png
+P 7FF0B3B3 33.png
+P A50EC162 34.png
+P 08E61389 35.png
+P C066D2FB 4.png
+P 34112B51 5.png
+P 0A6C7278 6.png
+P 3CC54D85 7.png
+P FF62ED6A 8.png
+P 755203ED 9.png
+P D4499B05 wbg1.png
 D comp
 P 9401CC40 blank.png
 P B03390E5 btn_close.png
@@ -69,35 +70,65 @@ P B9680947 vscroll$up.png
 P 7E990267 vscroll.png
 P E466EB1C vslider$bar.png
 P 2BFF7046 vslider.png
+D end
+D load
+R 6206E1E1 bg.png
+P 34B7B572 图层 1.png
+P 1B69055F 图层 10.png
+P 3E6BBDDD 图层 11.png
+P 4FBE9E34 图层 12.png
+P CA1411B2 图层 13.png
+P 8698EB8F 图层 14.png
+P E8F7B48B 图层 15.png
+P 9508CDC5 图层 16.png
+P FACBD8CC 图层 17.png
+P CF4D4711 图层 18.png
+P D29B5D23 图层 19.png
+P 7E0C6261 图层 2.png
+P 60E23CE7 图层 20.png
+P 232E31C9 图层 21.png
+P 6019B6E8 图层 22.png
+P 4E01D3E2 图层 23.png
+P 6009BF99 图层 24.png
+P CDAA5380 图层 25.png
+P 3BFE1EE8 图层 26.png
+P 0EC92D4C 图层 27.png
+P 80BF78A3 图层 28.png
+P 282BFABE 图层 29.png
+P 8CEFA691 图层 3.png
+P 6C82837C 图层 4.png
+P 6DC94CED 图层 5.png
+P F3578CEA 图层 6.png
+P 3AC64E6E 图层 7.png
+P 193E37F5 图层 8.png
+P BB78B6A4 图层 9.png
+D long
+P BA099FCF 1-1.png
+P 85A07F60 1-2.png
+P A3164E55 1-3.png
+P 16D8E1B4 1-4.png
+P 079FE156 2-1.png
+P 1EF3D926 2-2.png
+P AFF9F13C 2-3.png
+P 91AD45D3 2-4.png
+P 1C9B3FFF bad.png
+P D4499B05 bg1.png
+R 1156F1CC bg2.png
+R DFF4F980 bg3.png
+R F0DB373C bg4.png
+P 11E3E95C long.png
+P 4B7A52B5 m1.png
+P 5EE0E6C7 m2.png
+P 122A67AD m3.png
+P E99FA358 m4.png
+P 78DE9574 perfect.png
 D ship
-P 84E39BC2 bandship1.png
-P 5FA009FD bandship2.png
-P 3DFEBB7D bandship3.png
-P 267BDF6F bandship4.png
-P AFAA9669 bandship5.png
-P 5775E378 goship1.png
-P 773C710F goship2.png
-P 10EE7E8E goship3.png
-P B0FB3DB2 goship4.png
-P 08B5306C goship5.png
-P 104D1ED1 okship1.png
-P 3FD87FD0 okship2.png
-P 8BFEA897 okship3.png
-P C1A9B56E okship4.png
-P 151C6CA5 okship5.png
-P 7F2039EC shopship1.png
-P 6ECCD735 shopship2.png
-P B2AB0186 shopship3.png
-P EE2604CC shopship4.png
-P 08D3CCE8 shopship5.png
 D sound
-R A48B3E30 321.mp3
+R 6955F63F 321.mp3
 R B820ECA3 bad.mp3
-R CB162848 beat.mp3
+R B68D4B9C beat.mp3
 R 7C2F0827 button.mp3
-R 1DC3ABD8 destroy.wav
-R 3997C380 end.mp3
-R FF0B6E8D hit.wav
+R 9D8A8085 end.mp3
 D test
 P 1DFA6065 b1.png
 P 90AE1DE1 b2.png
@@ -107,3 +138,269 @@ P 4D16AC06 c2.png
 P 39B957DA p1.png
 P 2E1973F5 t1.png
 P F8700A3B tra.png
+D end/0
+P 304F5179 star_show0001.png
+P 5498446B star_show0002.png
+P A09ECBE6 star_show0003.png
+P 249281C1 star_show0004.png
+P 6FCA3D75 star_show0005.png
+P 92F4ED81 star_show0006.png
+P CC8B89FD star_show0007.png
+P 4ECA8D67 star_show0008.png
+P 23CC6246 star_show0009.png
+P 93C382A7 star_show0010.png
+P 3BD8D873 star_show0011.png
+P 7CA49E8A star_show0012.png
+P FAD497BE star_show0013.png
+D end/00
+P 56C004D8 bei0001.png
+P 511823DE bei0002.png
+P 796C4D05 bei0003.png
+P 27644A08 bei0004.png
+P 7C8E9456 bei0005.png
+P B6B9F651 bei0006.png
+P 329E5825 bei0007.png
+P 3A8B2D38 bei0008.png
+P 46E9A4BB bei0009.png
+D end/1
+P 0100DAF6 star_show0001.png
+P BE759158 star_show0002.png
+P EB54E7BB star_show0003.png
+P 6C49CF52 star_show0004.png
+P A6348B1C star_show0005.png
+P A06F6451 star_show0006.png
+P C04044D8 star_show0007.png
+P 617950A5 star_show0008.png
+P 8601ADA2 star_show0009.png
+P ECC1525F star_show0010.png
+P 8D4F4117 star_show0011.png
+P 63677A85 star_show0012.png
+P F7624CF1 star_show0013.png
+D end/2
+P 2572D142 star_show0001.png
+P FD51A88F star_show0002.png
+P 07E9CB1B star_show0003.png
+P 88F51DDA star_show0004.png
+P 61ED5068 star_show0005.png
+P 30362D65 star_show0006.png
+P A95D3013 star_show0007.png
+P 184019E8 star_show0008.png
+P 668DC49C star_show0009.png
+P 89A39FE0 star_show0010.png
+P 6F8DFE6B star_show0011.png
+P 2EA45BAF star_show0012.png
+P 9E7B2C03 star_show0013.png
+D end/3
+P 7409E4A2 star_show0001.png
+P CF4E3341 star_show0002.png
+P E274DD00 star_show0003.png
+P 1F3CDEE5 star_show0004.png
+P B64F2907 star_show0005.png
+P 1E431C9A star_show0006.png
+P B4718852 star_show0007.png
+P 012656A5 star_show0008.png
+P 6A834739 star_show0009.png
+P 109D5AC3 star_show0010.png
+P F26EB943 star_show0011.png
+P A166B5E8 star_show0012.png
+P E4E7CBB0 star_show0013.png
+D long/longSWF
+P AEABC2DC xiaolong0001.png
+P AEABC2DC xiaolong0002.png
+P F80BF331 xiaolong0003.png
+P F80BF331 xiaolong0004.png
+P B27CD718 xiaolong0005.png
+P B27CD718 xiaolong0006.png
+P B543E0D3 xiaolong0007.png
+P B543E0D3 xiaolong0008.png
+P DD01F137 xiaolong0009.png
+P DD01F137 xiaolong0010.png
+P 6CFA9FBA xiaolong0011.png
+P 6CFA9FBA xiaolong0012.png
+P 5B4B8243 xiaolong0013.png
+P 5B4B8243 xiaolong0014.png
+P 5C99AA83 xiaolong0015.png
+P 5C99AA83 xiaolong0016.png
+P F2FFF4AA xiaolong0017.png
+P F2FFF4AA xiaolong0018.png
+P 50091E6B xiaolong0019.png
+P 8312C709 xiaolong0020.png
+P 023EE8B7 xiaolong0021.png
+P 2611DB64 xiaolong0022.png
+P 18DA587D xiaolong0023.png
+P 18DA587D xiaolong0024.png
+P AEABC2DC xiaolong0025.png
+P AEABC2DC xiaolong0026.png
+P F80BF331 xiaolong0027.png
+P F80BF331 xiaolong0028.png
+P B27CD718 xiaolong0029.png
+P B27CD718 xiaolong0030.png
+P B543E0D3 xiaolong0031.png
+P B543E0D3 xiaolong0032.png
+P DD01F137 xiaolong0033.png
+P DD01F137 xiaolong0034.png
+P 6CFA9FBA xiaolong0035.png
+P 6CFA9FBA xiaolong0036.png
+P 5B4B8243 xiaolong0037.png
+P 5B4B8243 xiaolong0038.png
+P 5C99AA83 xiaolong0039.png
+P 5C99AA83 xiaolong0040.png
+P F2FFF4AA xiaolong0041.png
+P F2FFF4AA xiaolong0042.png
+P 50091E6B xiaolong0043.png
+P 8312C709 xiaolong0044.png
+P 023EE8B7 xiaolong0045.png
+P 2611DB64 xiaolong0046.png
+P 18DA587D xiaolong0047.png
+P 18DA587D xiaolong0048.png
+P AEABC2DC xiaolong0049.png
+P AEABC2DC xiaolong0050.png
+P F80BF331 xiaolong0051.png
+P F80BF331 xiaolong0052.png
+P B27CD718 xiaolong0053.png
+P B27CD718 xiaolong0054.png
+P B543E0D3 xiaolong0055.png
+P B543E0D3 xiaolong0056.png
+P DD01F137 xiaolong0057.png
+P DD01F137 xiaolong0058.png
+P 6CFA9FBA xiaolong0059.png
+P 6CFA9FBA xiaolong0060.png
+P 5B4B8243 xiaolong0061.png
+P 5B4B8243 xiaolong0062.png
+P 5C99AA83 xiaolong0063.png
+P 5C99AA83 xiaolong0064.png
+P F2FFF4AA xiaolong0065.png
+P F2FFF4AA xiaolong0066.png
+P 50091E6B xiaolong0067.png
+P 8312C709 xiaolong0068.png
+P 023EE8B7 xiaolong0069.png
+P 2611DB64 xiaolong0070.png
+P 18DA587D xiaolong0071.png
+P 18DA587D xiaolong0072.png
+P AEABC2DC xiaolong0073.png
+P AEABC2DC xiaolong0074.png
+P F80BF331 xiaolong0075.png
+P F80BF331 xiaolong0076.png
+P B27CD718 xiaolong0077.png
+P B27CD718 xiaolong0078.png
+P B543E0D3 xiaolong0079.png
+P B543E0D3 xiaolong0080.png
+P DD01F137 xiaolong0081.png
+P DD01F137 xiaolong0082.png
+P 6CFA9FBA xiaolong0083.png
+P 6CFA9FBA xiaolong0084.png
+P 5B4B8243 xiaolong0085.png
+P 5B4B8243 xiaolong0086.png
+P 5C99AA83 xiaolong0087.png
+P 5C99AA83 xiaolong0088.png
+P F2FFF4AA xiaolong0089.png
+P F2FFF4AA xiaolong0090.png
+P ABF43703 xiaolong0258.png
+P ABF43703 xiaolong0259.png
+P ABF43703 xiaolong0260.png
+P 45775C9A xiaolong0261.png
+P 45775C9A xiaolong0262.png
+P 45775C9A xiaolong0263.png
+P 8987BEAA xiaolong0264.png
+P 8987BEAA xiaolong0265.png
+P 8987BEAA xiaolong0266.png
+D ship/bad
+D ship/go
+D ship/ok
+D ship/shop
+D ship/bad/bul
+P F292D40D 1.png
+P E8A998FB 2.png
+P 112068FB 3.png
+P E3011154 4.png
+P 17FEAA68 5.png
+D ship/bad/gre
+P C3C348DC 1.png
+P D99C548E 2.png
+P 14F8D18F 3.png
+P B7844725 4.png
+P D821193C 5.png
+D ship/bad/red
+P 694CA511 1.png
+P 063496E6 2.png
+P CD4B18FD 3.png
+P A1082F2E 4.png
+P 497A62C4 5.png
+D ship/bad/yel
+P D2A86504 1.png
+P D60AEDD5 2.png
+P 7C34E415 3.png
+P 96047058 4.png
+P E06795FA 5.png
+D ship/go/bul
+P DA8B103D 1.png
+P F3BEB348 2.png
+P 8CAA9DB3 3.png
+P 1D7B0D15 4.png
+P 6682E967 5.png
+D ship/go/gre
+P 7217BF57 1.png
+P E4BECFAE 2.png
+P 7F2FDA4B 3.png
+P CC9988EE 4.png
+P 6992C7BC 5.png
+D ship/go/red
+P 67CF62C3 1.png
+P 8BA7323D 2.png
+P EBCAD20F 3.png
+P E1D4B7B6 4.png
+P 5799E541 5.png
+D ship/go/yel
+P CDEC455F 1.png
+P 8B67E13E 2.png
+P 6DD7CD1C 3.png
+P 259608B8 4.png
+P D2131EF7 5.png
+D ship/ok/bul
+P E9386A25 1.png
+P 7BDEFB27 2.png
+P AFA71E20 3.png
+P E9A9532B 4.png
+P D786C4FB 5.png
+D ship/ok/gre
+P 6ABA245B 1.png
+P 485C9998 2.png
+P C6AE0033 3.png
+P 7E97947D 4.png
+P FB469B43 5.png
+D ship/ok/red
+P CC6CC0E8 1.png
+P 6A80915E 2.png
+P D1990657 3.png
+P 72239CF9 4.png
+P 450689BE 5.png
+D ship/ok/yel
+P A080741A 1.png
+P B7FC318A 2.png
+P BB1EABA7 3.png
+P EE425F6E 4.png
+P 19BC1626 5.png
+D ship/shop/bul
+P 3528C450 1.png
+P C1427614 2.png
+P 6EE36461 3.png
+P 3A1C1397 4.png
+P 56F9BA64 5.png
+D ship/shop/gre
+P 9943EBDC 1.png
+P 2DB07F3E 2.png
+P 22E5A7D5 3.png
+P 69B3EECF 4.png
+P 0E393CCA 5.png
+D ship/shop/red
+P 4B7A52B5 1.png
+P EBFC8753 2.png
+P 257D7CEE 3.png
+P 551E1682 4.png
+P BBFE3DC5 5.png
+D ship/shop/yel
+P 77CE9E30 1.png
+P 44233512 2.png
+P 2FC424CF 3.png
+P 6B645373 4.png
+P D09125E1 5.png

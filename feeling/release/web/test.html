@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe</title>
+    <style>
+        .game-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* .game-container iframe {
+      display: block;
+      box-sizing: border-box;
+    } */
+
+    body {
+      background-color: white;
+    }
+
+    body,
+    p {
+      margin: 0;
+    }
+
+    table {
+      border-spacing: 0;
+    }
+
+    ul {
+      margin: 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      -webkit-overflow-scrolling: touch;
+      text-size-adjust: 100% !important;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="game-container">
+            <iframe frameborder="0" scrolling="no" width="100%" height="100%" src="https://dev170.weibanker.cn/chenjj/www/horizontal/index.html" id="myIFrame"></iframe>
+        </div>
+    </div>
+    <script>
+    	var myIFrame = document.getElementById('myIFrame');
+    // myIFrame.height = window.innerHeight;
+        window.onload = function () {
+            var domain = 'https://dev170.weibanker.cn/chenjj/www/horizontal/index.html';
+            var iframe = document.getElementById('myIFrame').contentWindow;
+            //发送消息
+                var message = { "name": "castQuestions", "data": [{ "questionId": 2051, "title": "感受节奏", "payload": { "explainAudioUrl": "https://muses-test.oss-cn-beijing.aliyuncs.com/muses-lesson/1812061139/audio/5.mp3", "musicUrl": "https://muses-test.oss-cn-beijing.aliyuncs.com/muses-lesson/1812061139/audio/4.mp3", "musicDuration": 9000, "objects": [{ "size": 1, "startTime": 1000, "endTime": 2000, "obstacle": true },
+                { "size": 1, "startTime": 1000, "endTime": 2000, "obstacle": false },
+                { "size": 1, "startTime": 4000, "endTime": 5000, "obstacle": false },
+                { "size": 1, "startTime": 4000, "endTime": 5000, "obstacle": true },
+                { "size": 1, "startTime": 6000, "endTime": 7000, "obstacle": false },
+                { "size": 1, "startTime": 8000, "endTime": 9000, "obstacle": true }], "type": 107101 }, "type": 107101 }] };
+                iframe.postMessage(message,'https://dev170.weibanker.cn/chenjj/www/horizontal/index.html'); 
+            //响应事件
+            window.addEventListener('message',function(event) {
+                let data = event.data
+                console.log('index:  ' + data.name);
+            },false);
+        }
+     
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"dialog/LoadingDialog":{"type":"Dialog","props":{"width":1380,"height":640,"autoDestroyAtClosed":false},"compId":2,"child":[{"type":"Animation","props":{"y":320,"x":504,"source":"ani/load.ani","rotation":-90,"pivotY":0,"pivotX":0,"autoPlay":true},"compId":10}],"loadList":["ani/load.ani"],"loadList3D":[]}}

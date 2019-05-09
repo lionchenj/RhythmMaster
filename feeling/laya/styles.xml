@@ -5,4 +5,5 @@
    <item name="bg" type="" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
    <item name="bg/1.png" type="Sprite" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
    <item name="bg/10.png" type="Sprite" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
+   <item name="long/long.png" type="Sprite" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
 </res>
